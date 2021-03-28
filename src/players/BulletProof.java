@@ -1,6 +1,7 @@
 package players;
 
 import exceptions.CannotPlayException;
+import exceptions.CannotWakeUpException;
 
 public class BulletProof extends Player{
 
@@ -11,8 +12,8 @@ public class BulletProof extends Player{
     }
 
     @Override
-    public void playOn(Player player) throws CannotPlayException {
-        throw new CannotPlayException("user cannot wake up during night");
+    public void playOn(Player player) throws CannotWakeUpException {
+        throw new CannotWakeUpException();
     }
 
     @Override

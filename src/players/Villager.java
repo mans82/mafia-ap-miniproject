@@ -1,6 +1,7 @@
 package players;
 
 import exceptions.CannotPlayException;
+import exceptions.CannotWakeUpException;
 
 public class Villager extends Player{
 
@@ -9,7 +10,7 @@ public class Villager extends Player{
     }
 
     @Override
-    public void playOn(Player player) throws CannotPlayException {
-        throw new CannotPlayException(player.getName() + "is citizen");
+    public void playOn(Player player) throws CannotWakeUpException {
+        throw new CannotWakeUpException();
     }
 }

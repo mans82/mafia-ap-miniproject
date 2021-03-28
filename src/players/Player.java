@@ -1,6 +1,7 @@
 package players;
 
 import exceptions.CannotPlayException;
+import exceptions.CannotWakeUpException;
 
 public abstract class Player {
     private final String name;
@@ -41,5 +42,5 @@ public abstract class Player {
         return false;
     }
 
-    public abstract void playOn(Player player) throws CannotPlayException;
+    public abstract void playOn(Player player) throws CannotPlayException, CannotWakeUpException;
 }
