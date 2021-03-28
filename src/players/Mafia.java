@@ -4,7 +4,7 @@ import exceptions.CannotVoteException;
 
 public class Mafia extends Player{
 
-    private Player playerVotedToKill;
+    private Player playerVotedToKill = null;
 
     protected Mafia(String name) {
         super(name);
@@ -16,5 +16,11 @@ public class Mafia extends Player{
             throw new CannotVoteException("votee already dead");
         }
         this.playerVotedToKill = player;
+    }
+
+    @Override
+    public void resetState() {
+        super.resetState();
+        this.playerVotedToKill = null;
     }
 }
