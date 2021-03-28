@@ -29,7 +29,7 @@ public abstract class Player {
         this.voted = false;
     }
 
-    public void die() {
+    public void die(boolean isNight) {
         this.isDead = true;
     }
 
