@@ -2,6 +2,7 @@ package players;
 
 import exceptions.CannotPlayException;
 import exceptions.CannotWakeUpException;
+import exceptions.JokerWonException;
 
 public abstract class Player {
     private final String name;
@@ -30,7 +31,7 @@ public abstract class Player {
         this.voted = false;
     }
 
-    public void die(boolean isNight) {
+    public void die(boolean isNight) throws JokerWonException {
         this.isDead = true;
     }
 
