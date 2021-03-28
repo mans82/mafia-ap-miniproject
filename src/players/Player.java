@@ -1,7 +1,6 @@
 package players;
 
-import exceptions.CannotVoteException;
-import exceptions.CannotWakeUpException;
+import exceptions.CannotPlayException;
 
 public abstract class Player {
     private final String name;
@@ -42,5 +41,5 @@ public abstract class Player {
         return false;
     }
 
-    public abstract void playOn(Player player) throws CannotWakeUpException, CannotVoteException;
+    public abstract void playOn(Player player) throws CannotPlayException;
 }

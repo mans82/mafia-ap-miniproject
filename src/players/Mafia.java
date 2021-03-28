@@ -1,6 +1,6 @@
 package players;
 
-import exceptions.CannotVoteException;
+import exceptions.CannotPlayException;
 
 public class Mafia extends Player{
 
@@ -11,9 +11,9 @@ public class Mafia extends Player{
     }
 
     @Override
-    public void playOn(Player player) throws CannotVoteException {
+    public void playOn(Player player) throws CannotPlayException {
         if (player.isDead()) {
-            throw new CannotVoteException("votee already dead");
+            throw new CannotPlayException("votee already dead");
         }
         this.playerVotedToKill = player;
     }
