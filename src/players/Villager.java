@@ -2,9 +2,9 @@ package players;
 
 import exceptions.CannotWakeUpException;
 
-public class Citizen extends Player{
+public class Villager extends Player{
 
-    protected Citizen(String name) {
+    protected Villager(String name) {
         super(name);
     }
 
