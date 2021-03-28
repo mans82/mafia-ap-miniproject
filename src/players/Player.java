@@ -38,5 +38,9 @@ public abstract class Player {
         return isDead;
     }
 
+    public boolean isMafia() {
+        return false;
+    }
+
     public abstract void playOn(Player player) throws CannotWakeUpException, CannotVoteException;
 }

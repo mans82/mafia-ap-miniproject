@@ -23,4 +23,9 @@ public class Mafia extends Player{
         super.resetState();
         this.playerVotedToKill = null;
     }
+
+    @Override
+    public boolean isMafia() {
+        return true;
+    }
 }
