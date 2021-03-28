@@ -1,5 +1,6 @@
 package players;
 
+import exceptions.CannotVoteException;
 import exceptions.CannotWakeUpException;
 
 public abstract class Player {
@@ -37,5 +38,5 @@ public abstract class Player {
         return isDead;
     }
 
-    public abstract void playOn(Player player) throws CannotWakeUpException;
+    public abstract void playOn(Player player) throws CannotWakeUpException, CannotVoteException;
 }
