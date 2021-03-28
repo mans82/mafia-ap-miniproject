@@ -1,5 +1,7 @@
 package players;
 
+import exceptions.CannotWakeUpException;
+
 public abstract class Player {
     private final String name;
     private int voteCount = 0;
@@ -35,5 +37,5 @@ public abstract class Player {
         return isDead;
     }
 
-    public abstract void playOn(Player player);
+    public abstract void playOn(Player player) throws CannotWakeUpException;
 }
