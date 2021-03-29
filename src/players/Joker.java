@@ -5,7 +5,7 @@ import exceptions.JokerWonException;
 
 public class Joker extends Player{
 
-    protected Joker(String name) {
+    public Joker(String name) {
         super(name);
     }
 

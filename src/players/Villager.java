@@ -5,7 +5,7 @@ import exceptions.CannotWakeUpException;
 
 public class Villager extends Player{
 
-    protected Villager(String name) {
+    public Villager(String name) {
         super(name);
     }
 

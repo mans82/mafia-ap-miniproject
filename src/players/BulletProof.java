@@ -7,7 +7,7 @@ public class BulletProof extends Player{
 
     private boolean usedExtraHealth = false;
 
-    protected BulletProof(String name) {
+    public BulletProof(String name) {
         super(name);
     }
 

@@ -7,7 +7,7 @@ public class Silencer extends Mafia{
     private Player silencedPlayer = null;
     private boolean hasSilenced = false;
 
-    protected Silencer(String name) {
+    public Silencer(String name) {
         super(name);
     }
 

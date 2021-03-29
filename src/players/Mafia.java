@@ -6,7 +6,7 @@ public class Mafia extends Player{
 
     private Player playerVotedToKill = null;
 
-    protected Mafia(String name) {
+    public Mafia(String name) {
         super(name);
     }
 

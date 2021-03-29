@@ -6,7 +6,7 @@ public class Detective extends Player{
 
     private boolean hasQueried = false;
 
-    protected Detective(String name) {
+    public Detective(String name) {
         super(name);
     }
 

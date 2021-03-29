@@ -3,7 +3,7 @@ package players;
 
 public class GodFather extends Mafia{
 
-    protected GodFather(String name) {
+    public GodFather(String name) {
         super(name);
     }
 

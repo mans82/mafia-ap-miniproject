@@ -5,7 +5,7 @@ public class Doctor extends Player{
 
     private Player savedPlayer = null;
 
-    protected Doctor(String name) {
+    public Doctor(String name) {
         super(name);
     }
 
