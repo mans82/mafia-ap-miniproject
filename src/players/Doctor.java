@@ -10,6 +10,11 @@ public class Doctor extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "Doctor";
+    }
+
+    @Override
     public void playOn(Player player) {
         this.savedPlayer = player;
     }

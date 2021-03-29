@@ -11,6 +11,11 @@ public class Mafia extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "Mafia";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotPlayException {
         if (player.isDead()) {
             throw new CannotPlayException("votee already dead");

@@ -12,6 +12,11 @@ public class Silencer extends Mafia{
     }
 
     @Override
+    public String getRoleName() {
+        return "Silencer";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotPlayException {
         if (hasSilenced) {
             super.playOn(player);

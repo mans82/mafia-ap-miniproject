@@ -11,6 +11,11 @@ public class Detective extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "Detective";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotPlayException {
         if (this.hasQueried) {
             throw new CannotPlayException("detective has already asked");

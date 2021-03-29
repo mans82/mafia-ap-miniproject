@@ -10,6 +10,11 @@ public class Villager extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "Villager";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotWakeUpException {
         throw new CannotWakeUpException();
     }

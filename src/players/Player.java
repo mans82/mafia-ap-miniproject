@@ -18,6 +18,8 @@ public abstract class Player {
         return name;
     }
 
+    public abstract String getRoleName();
+
     public void vote(Player votee) throws IllegalStateException{
         if (this.voted) {
             throw new IllegalStateException("Player already voted");

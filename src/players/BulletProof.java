@@ -12,6 +12,11 @@ public class BulletProof extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "BulletProof";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotWakeUpException {
         throw new CannotWakeUpException();
     }

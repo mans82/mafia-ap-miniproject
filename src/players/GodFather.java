@@ -8,6 +8,11 @@ public class GodFather extends Mafia{
     }
 
     @Override
+    public String getRoleName() {
+        return "GodFather";
+    }
+
+    @Override
     public boolean isMafia() {
         return false;
     }

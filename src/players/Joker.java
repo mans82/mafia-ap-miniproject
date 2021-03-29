@@ -10,6 +10,11 @@ public class Joker extends Player{
     }
 
     @Override
+    public String getRoleName() {
+        return "Joker";
+    }
+
+    @Override
     public void playOn(Player player) throws CannotWakeUpException {
         throw new CannotWakeUpException();
     }
