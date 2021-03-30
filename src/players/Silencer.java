@@ -32,4 +32,8 @@ public class Silencer extends Mafia{
         this.silencedPlayer = null;
         this.hasSilenced = false;
     }
+
+    public Player getSilencedPlayer() {
+        return silencedPlayer;
+    }
 }

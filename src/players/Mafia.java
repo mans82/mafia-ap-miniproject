@@ -33,4 +33,8 @@ public class Mafia extends Player{
     public boolean isMafia() {
         return true;
     }
+
+    public Player getPlayerVotedToKill() {
+        return playerVotedToKill;
+    }
 }

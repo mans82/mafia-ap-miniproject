@@ -46,4 +46,8 @@ public abstract class Player {
     }
 
     public abstract void playOn(Player player) throws CannotPlayException, CannotWakeUpException;
+
+    public int getVoteCount() {
+        return voteCount;
+    }
 }
