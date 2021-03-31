@@ -17,6 +17,7 @@ public class Main {
             try {
                 String curToken = stdin.next();
                 if (curToken.equals("create_game")) {
+                    stdin.skip(" ");
                     String[] names = stdin.nextLine().split(" ");
                     if (room != null) {
                         throw new GameAlreadyStartedException();
