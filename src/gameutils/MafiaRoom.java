@@ -228,18 +228,22 @@ public class MafiaRoom {
         // Mafia kills
         Player[] mafiaTargets = this.getMaxMafiaVotedAlivePlayers();
         Player deadPlayer = null;
+        Doctor gameDoctor = this.getDoctor();
         for (Player mafiaTarget : mafiaTargets) {
             System.out.println("mafia tried to kill " + mafiaTarget.getName());
         }
-        if (mafiaTargets.length == 2) {
-            Doctor doctor = this.getDoctor();
-            if (mafiaTargets[0] == doctor.getSavedPlayer()) {
+        if (mafiaTargets.length == 0 || mafiaTargets.length >= 3 || (mafiaTargets.length == 2 && gameDoctor == null)) {
+            System.out.println("nobody died");
+        } else if (mafiaTargets.length == 2) {
+            if (mafiaTargets[0] == gameDoctor.getSavedPlayer()) {
                 deadPlayer = mafiaTargets[1];
-            } else if (mafiaTargets[1] == doctor.getSavedPlayer()) {
+            } else if (mafiaTargets[1] == gameDoctor.getSavedPlayer()) {
                 deadPlayer = mafiaTargets[0];
             }
-        } else if (mafiaTargets.length == 1) {
-            deadPlayer = mafiaTargets[0];
+        } else {// mafiaTargets.length == 1
+            if (gameDoctor == null || !gameDoctor.getSavedPlayer().equals(mafiaTargets[0])) {
+                deadPlayer = mafiaTargets[0];
+            }
         }
 
         if (deadPlayer != null) {
@@ -248,9 +252,9 @@ public class MafiaRoom {
         }
 
         // Silencer events
-        Player silencedPlayer = this.getSilencer().getSilencedPlayer();
-        if (silencedPlayer != null) {
-            System.out.println("Silenced " + silencedPlayer.getName());
+        Silencer gameSilencer = this.getSilencer();
+        if (gameSilencer != null && gameSilencer.getSilencedPlayer() != null) {
+            System.out.println("Silenced " + gameSilencer.getSilencedPlayer().getName());
         }
     }
 
