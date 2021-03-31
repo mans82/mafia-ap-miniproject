@@ -1,6 +1,7 @@
 package gameutils;
 
 import exceptions.GameAlreadyStartedException;
+import exceptions.GameNotStartedException;
 import exceptions.NoRoleException;
 import exceptions.PlayerNotFoundException;
 import players.*;
@@ -11,7 +12,7 @@ import java.util.HashMap;
 public class MafiaRoom {
 
     private int dayNum = 0;
-    private boolean isNight = false;
+    private boolean isNight = true;
     private HashMap<String, Player> players = new HashMap<>();
 
     public MafiaRoom(String[] names) {
@@ -79,21 +80,29 @@ public class MafiaRoom {
 
             System.out.println(name + ": " + curPlayer.getRoleName());
         }
+        this.dayNum = 1;
 
         System.out.println();
         System.out.println("Ready? Set... GO!");
+
     }
 
-    public void startDay() throws IllegalStateException{
-        if (!this.gameStarted() || !this.isNight) {
+    public void startDay() throws IllegalStateException, GameNotStartedException {
+        if (!this.gameStarted()) {
+            throw new GameNotStartedException();
+        }
+        if (!this.isNight) {
             throw new IllegalStateException("it is already day");
         }
         this.isNight = false;
         System.out.println("Day " + this.dayNum);
     }
 
-    public void startNight() throws IllegalStateException{
-        if (!this.gameStarted() || this.isNight) {
+    public void startNight() throws IllegalStateException, GameNotStartedException {
+        if (!this.gameStarted()) {
+            throw new GameNotStartedException();
+        }
+        if (this.isNight) {
             throw new IllegalStateException("it is already night");
         }
         this.isNight = true;

@@ -83,7 +83,7 @@ public class Main {
                     }
 
                 }
-            } catch (GameAlreadyStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | CannotWakeUpException | CannotPlayException e) {
+            } catch (GameAlreadyStartedException | GameNotStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | CannotWakeUpException | CannotPlayException e) {
                 System.out.println(e.getMessage());
             } catch (JokerWonException e) {
                 System.out.println("Joker won!");
