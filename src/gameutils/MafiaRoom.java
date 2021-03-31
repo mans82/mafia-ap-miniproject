@@ -2,6 +2,7 @@ package gameutils;
 
 import exceptions.GameAlreadyStartedException;
 import exceptions.NoRoleException;
+import exceptions.PlayerNotFoundException;
 import players.*;
 
 import java.util.ArrayList;
@@ -19,13 +20,19 @@ public class MafiaRoom {
         }
     }
 
-    private boolean gameStarted() {
+    public boolean gameStarted() {
         return this.dayNum > 0;
     }
 
-    public void assignRole(String name, Role role) {
+    public boolean isNight() {
+        return this.isNight;
+    }
 
+    public void assignRole(String name, Role role) throws PlayerNotFoundException {
 
+        if (!this.players.containsKey(name)) {
+            throw new PlayerNotFoundException();
+        }
 
         Player playerObject = null;
         switch (role) {
@@ -77,18 +84,29 @@ public class MafiaRoom {
         System.out.println("Ready? Set... GO!");
     }
 
-    public void startDay() {
+    public void startDay() throws IllegalStateException{
+        if (!this.gameStarted() || !this.isNight) {
+            throw new IllegalStateException("it is already day");
+        }
         this.isNight = false;
         System.out.println("Day " + this.dayNum);
     }
 
-    public void startNight() {
+    public void startNight() throws IllegalStateException{
+        if (!this.gameStarted() || this.isNight) {
+            throw new IllegalStateException("it is already night");
+        }
         this.isNight = true;
         System.out.println("Night " + this.dayNum++);
     }
 
-    public Player getPlayerByName(String name) {
-        return this.players.get(name);
+    public Player getPlayerByName(String name) throws PlayerNotFoundException {
+        Player result = this.players.get(name);
+        if (result == null) {
+            throw new PlayerNotFoundException();
+        }
+
+        return result;
     }
 
     private int getMaxVotes() {
@@ -303,7 +321,7 @@ public class MafiaRoom {
         return this.getTotalMafiaCount() >= this.getTotalAliveCivilianCount();
     }
 
-    public boolean isCivilianWinner() {
+    public boolean isVillagersWinner() {
         return this.getTotalMafiaCount() == 0;
     }
 
