@@ -2,12 +2,10 @@ package gameutils;
 
 import exceptions.GameAlreadyStartedException;
 import exceptions.NoRoleException;
-import exceptions.RoleNotFoundException;
 import players.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class MafiaRoom {
 
@@ -25,11 +23,9 @@ public class MafiaRoom {
         return this.dayNum > 0;
     }
 
-    public void assignRole(String name, Role role) throws RoleNotFoundException {
+    public void assignRole(String name, Role role) {
 
-        if (role == null) {
-            throw new RoleNotFoundException();
-        }
+
 
         Player playerObject = null;
         switch (role) {
