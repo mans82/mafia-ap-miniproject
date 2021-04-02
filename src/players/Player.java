@@ -2,6 +2,7 @@ package players;
 
 import exceptions.CannotPlayException;
 import exceptions.CannotWakeUpException;
+import exceptions.TargetIsMafiaException;
 
 public abstract class Player {
     private final String name;
@@ -49,7 +50,7 @@ public abstract class Player {
         return false;
     }
 
-    public abstract void playOn(Player player) throws CannotPlayException, CannotWakeUpException;
+    public abstract void playOn(Player player) throws CannotPlayException, CannotWakeUpException, TargetIsMafiaException;
 
     public int getVoteCount() {
         return voteCount;

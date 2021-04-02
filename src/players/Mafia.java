@@ -1,6 +1,7 @@
 package players;
 
 import exceptions.CannotPlayException;
+import exceptions.TargetIsMafiaException;
 
 public class Mafia extends Player{
 
@@ -16,9 +17,13 @@ public class Mafia extends Player{
     }
 
     @Override
-    public void playOn(Player player) throws CannotPlayException {
+    public void playOn(Player player) throws CannotPlayException, TargetIsMafiaException {
         if (player.isDead()) {
             throw new CannotPlayException("votee already dead");
+        }
+        if (player instanceof Mafia) {
+            // Should not be able to vote!
+            throw new TargetIsMafiaException();
         }
         this.playerVotedToKill = player;
     }

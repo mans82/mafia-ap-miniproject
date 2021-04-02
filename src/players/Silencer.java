@@ -1,6 +1,7 @@
 package players;
 
 import exceptions.CannotPlayException;
+import exceptions.TargetIsMafiaException;
 
 public class Silencer extends Mafia{
 
@@ -17,7 +18,7 @@ public class Silencer extends Mafia{
     }
 
     @Override
-    public void playOn(Player player) throws CannotPlayException {
+    public void playOn(Player player) throws CannotPlayException, TargetIsMafiaException {
         if (hasSilenced) {
             super.playOn(player);
         } else {
