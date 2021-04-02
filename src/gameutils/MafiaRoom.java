@@ -269,8 +269,12 @@ public class MafiaRoom {
         }
 
         if (deadPlayer != null) {
-            deadPlayer.die();
-            System.out.println(deadPlayer.getName() + " was killed");
+            if (deadPlayer instanceof BulletProof && !((BulletProof) deadPlayer).usedExtraHealth()) {
+                ((BulletProof) deadPlayer).useExtraHealth();
+            } else {
+                deadPlayer.die();
+                System.out.println(deadPlayer.getName() + " was killed");
+            }
         }
 
         // Silencer events
