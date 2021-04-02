@@ -99,7 +99,7 @@ public class Main {
                     }
 
                 }
-            } catch (GameAlreadyStartedException | GameNotStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | VoterSilencedException | CannotWakeUpException | CannotPlayException e) {
+            } catch (MafiaException e) {
                 System.out.println(e.getMessage());
             }
         }
