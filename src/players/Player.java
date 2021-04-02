@@ -20,9 +20,12 @@ public abstract class Player {
 
     public abstract String getRoleName();
 
-    public void vote(Player votee) throws IllegalStateException{
+    public void vote(Player votee) throws IllegalStateException, CannotPlayException {
         if (this.voted) {
             throw new IllegalStateException("Player already voted");
+        }
+        if (votee.isDead()) {
+            throw new CannotPlayException("votee already dead");
         }
         votee.voteCount++;
         this.voted = true;

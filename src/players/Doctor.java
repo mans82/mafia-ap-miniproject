@@ -1,6 +1,8 @@
 package players;
 
 
+import exceptions.CannotPlayException;
+
 public class Doctor extends Player{
 
     private Player savedPlayer = null;
@@ -15,7 +17,10 @@ public class Doctor extends Player{
     }
 
     @Override
-    public void playOn(Player player) {
+    public void playOn(Player player) throws CannotPlayException {
+        if (player.isDead()) {
+            throw new CannotPlayException("target already dead");
+        }
         this.savedPlayer = player;
     }
 

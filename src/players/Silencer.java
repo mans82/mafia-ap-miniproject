@@ -21,6 +21,9 @@ public class Silencer extends Mafia{
         if (hasSilenced) {
             super.playOn(player);
         } else {
+            if (player.isDead()) {
+                throw new CannotPlayException("target is already dead");
+            }
             this.silencedPlayer = player;
             this.hasSilenced = true;
         }
