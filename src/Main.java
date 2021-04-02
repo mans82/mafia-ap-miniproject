@@ -15,36 +15,38 @@ public class Main {
         // Game loop
         while (stdin.hasNext()) {
             try {
-                String curToken = stdin.next();
-                if (curToken.equals("create_game")) {
-                    stdin.skip(" ");
-                    String[] names = stdin.nextLine().split(" ");
-                    if (room != null) {
-                        throw new GameAlreadyStartedException();
-                    }
-                    room = new MafiaRoom(names);
-                } else if (curToken.equals("assign_role")) {
-                    try {
-                        String playerName = stdin.next();
-                        Role role = Role.valueOf(stdin.next().toUpperCase());
+                if (stdin.hasNext("(create_game)|(assign_role)|(start_game)|(get_game_state)")) {
+                    String curToken = stdin.next();
+                    if (curToken.equals("create_game")) {
+                        stdin.skip(" ");
+                        String[] names = stdin.nextLine().split(" ");
+                        if (room != null) {
+                            throw new GameAlreadyStartedException();
+                        }
+                        room = new MafiaRoom(names);
+                    } else if (curToken.equals("assign_role")) {
+                        try {
+                            String playerName = stdin.next();
+                            Role role = Role.valueOf(stdin.next().toUpperCase());
+                            if (room == null) {
+                                throw new NoRoomCreatedException();
+                            }
+                            room.assignRole(playerName, role);
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("role not found");
+                        }
+                    } else if (curToken.equals("start_game")) {
                         if (room == null) {
                             throw new NoRoomCreatedException();
                         }
-                        room.assignRole(playerName, role);
-                    } catch (IllegalArgumentException e) {
-                        System.out.println("role not found");
+                        room.startGame();
+                        room.startDay();
+                    } else if (curToken.equals("get_game_state")) {
+                        if (room == null) {
+                            throw new NoRoomCreatedException();
+                        }
+                        room.printGameState();
                     }
-                } else if (curToken.equals("start_game")) {
-                    if (room == null) {
-                        throw new NoRoomCreatedException();
-                    }
-                    room.startGame();
-                    room.startDay();
-                } else if (curToken.equals("get_game_state")) {
-                    if (room == null) {
-                        throw new NoRoomCreatedException();
-                    }
-                    room.printGameState();
                 }
 
                 if (room != null && room.gameStarted()) {
