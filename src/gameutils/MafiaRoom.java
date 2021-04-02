@@ -138,7 +138,9 @@ public class MafiaRoom {
             }
         }
 
-        return (Player[]) votedPlayers.toArray();
+        Player[] result = new Player[votedPlayers.size()];
+        votedPlayers.toArray(result);
+        return result;
     }
 
     private Doctor getDoctor() {
@@ -220,14 +222,16 @@ public class MafiaRoom {
 
     private Player[] getMaxMafiaVotedAlivePlayers() {
         int maxMafiaVotes = this.getMaxMafiaVotes();
-        ArrayList<Player> result = new ArrayList<>();
+        ArrayList<Player> resultList = new ArrayList<>();
         for (Player curPlayer : players.values()) {
             if (this.getMafiaVotesCountOfPlayer(curPlayer) == maxMafiaVotes) {
-                result.add(curPlayer);
+                resultList.add(curPlayer);
             }
         }
 
-        return (Player[]) result.toArray();
+        Player[] result = new Player[resultList.size()];
+        resultList.toArray(result);
+        return result;
     }
 
     public void processNightEvents() throws IllegalStateException{
