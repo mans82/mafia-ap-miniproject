@@ -1,7 +1,6 @@
 package players;
 
 import exceptions.CannotWakeUpException;
-import exceptions.JokerWonException;
 
 public class Joker extends Player{
 
@@ -19,12 +18,4 @@ public class Joker extends Player{
         throw new CannotWakeUpException();
     }
 
-    @Override
-    public void die(boolean isNight) throws JokerWonException {
-        if (!isNight) {
-            // Joker wins!
-            throw new JokerWonException();
-        }
-        super.die(false);
-    }
 }

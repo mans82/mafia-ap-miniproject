@@ -1,6 +1,5 @@
 package players;
 
-import exceptions.CannotPlayException;
 import exceptions.CannotWakeUpException;
 
 public class BulletProof extends Player{
@@ -21,12 +20,12 @@ public class BulletProof extends Player{
         throw new CannotWakeUpException();
     }
 
-    @Override
-    public void die(boolean isNight) {
-        if (isNight && !usedExtraHealth) {
-            this.usedExtraHealth = true;
-        } else {
-            super.die(false);
-        }
+    public boolean usedExtraHealth() {
+        return usedExtraHealth;
     }
+
+    public void useExtraHealth() {
+        this.usedExtraHealth = true;
+    }
+
 }

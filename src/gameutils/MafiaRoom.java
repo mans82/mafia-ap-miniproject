@@ -14,6 +14,7 @@ public class MafiaRoom {
     private int dayNum = 0;
     private boolean isNight = true;
     private HashMap<String, Player> players = new HashMap<>();
+    private boolean jokerWins = false;
 
     public MafiaRoom(String[] names) {
         for (String name : names) {
@@ -166,15 +167,17 @@ public class MafiaRoom {
         return null;
     }
 
-    public Player processVotes() {
+    public void processVotes() {
         Player[] votedPlayers = this.getMaxVotedPlayers();
         if (votedPlayers.length != 1) {
             System.out.println("nobody died");
-            return null;
         } else {
             System.out.println(votedPlayers[0].getName() + " died");
-            votedPlayers[0].die(this.isNight);
-            return votedPlayers[0];
+            if (votedPlayers[0] instanceof Joker) {
+                this.jokerWins = true;
+            } else {
+                votedPlayers[0].die();
+            }
         }
     }
     
@@ -266,7 +269,7 @@ public class MafiaRoom {
         }
 
         if (deadPlayer != null) {
-            deadPlayer.die(this.isNight);
+            deadPlayer.die();
             System.out.println(deadPlayer.getName() + " was killed");
         }
 
@@ -346,6 +349,10 @@ public class MafiaRoom {
 
     public boolean isVillagersWinner() {
         return this.getTotalMafiaCount() == 0;
+    }
+
+    public boolean isJokerWinner() {
+        return this.jokerWins;
     }
 
 }

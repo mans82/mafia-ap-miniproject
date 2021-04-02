@@ -1,6 +1,8 @@
 import exceptions.*;
 import gameutils.MafiaRoom;
 import gameutils.Role;
+import players.BulletProof;
+import players.Joker;
 import players.Player;
 
 import java.util.Scanner;
@@ -84,6 +86,10 @@ public class Main {
                     }
 
                     // Check if someone wins
+                    if (room.isJokerWinner()) {
+                        System.out.println("Joker won!");
+                        break;
+                    }
                     if (room.isVillagersWinner()) {
                         System.out.println("Villagers won!");
                         break;
@@ -95,9 +101,6 @@ public class Main {
                 }
             } catch (GameAlreadyStartedException | GameNotStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | VoterSilencedException | CannotWakeUpException | CannotPlayException e) {
                 System.out.println(e.getMessage());
-            } catch (JokerWonException e) {
-                System.out.println("Joker won!");
-                break;
             }
         }
     }
