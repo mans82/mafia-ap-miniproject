@@ -57,7 +57,6 @@ public class Main {
 
                             voter.vote(votee);
                         }
-//                        stdin.skip("end_vote");
                         stdin.next();
                         room.processVotes();
                         room.startNight();
@@ -69,7 +68,7 @@ public class Main {
 
                             actor.playOn(target);
                         }
-                        stdin.skip("end_night");
+                        stdin.next();
                         room.processNightEvents();
                         room.startDay();
                     }
