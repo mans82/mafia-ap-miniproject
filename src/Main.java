@@ -77,7 +77,6 @@ public class Main {
                         }
                         stdin.next();
                         room.processNightEvents();
-                        room.resetPlayersState();
                         room.startDay();
                     }
 
