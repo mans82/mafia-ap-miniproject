@@ -45,6 +45,9 @@ public class Main {
                         if (room == null) {
                             throw new NoRoomCreatedException();
                         }
+                        if (!room.gameStarted()) {
+                            throw new GameNotStartedException();
+                        }
                         room.printGameState();
                     }
                 }
