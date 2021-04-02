@@ -8,6 +8,7 @@ public abstract class Player {
     private final String name;
     private int voteCount = 0;
     private boolean voted = false;
+    protected boolean silenced = false;
     private boolean isDead = false;
 
     protected Player(String name) {
@@ -34,6 +35,7 @@ public abstract class Player {
     public void resetState() {
         this.voteCount = 0;
         this.voted = false;
+        this.silenced = false;
     }
 
     public void die(boolean isNight) throws JokerWonException {
@@ -52,5 +54,9 @@ public abstract class Player {
 
     public int getVoteCount() {
         return voteCount;
+    }
+
+    public boolean isSilenced() {
+        return silenced;
     }
 }

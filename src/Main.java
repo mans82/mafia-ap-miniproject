@@ -57,7 +57,11 @@ public class Main {
                             Player voter = room.getPlayerByName(stdin.next());
                             Player votee = room.getPlayerByName(stdin.next());
 
-                            voter.vote(votee);
+                            if (!voter.isSilenced()) {
+                                voter.vote(votee);
+                            } else {
+                                throw new VoterSilencedException();
+                            }
                         }
                         stdin.next();
                         room.processVotes();
@@ -87,7 +91,7 @@ public class Main {
                     }
 
                 }
-            } catch (GameAlreadyStartedException | GameNotStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | CannotWakeUpException | CannotPlayException e) {
+            } catch (GameAlreadyStartedException | GameNotStartedException | NoRoleException | IllegalStateException | NoRoomCreatedException | PlayerNotFoundException | VoterSilencedException | CannotWakeUpException | CannotPlayException e) {
                 System.out.println(e.getMessage());
             } catch (JokerWonException e) {
                 System.out.println("Joker won!");
