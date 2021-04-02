@@ -57,7 +57,8 @@ public class Main {
 
                             voter.vote(votee);
                         }
-                        stdin.skip("end_vote");
+//                        stdin.skip("end_vote");
+                        stdin.next();
                         room.processVotes();
                         room.startNight();
                     } else {
