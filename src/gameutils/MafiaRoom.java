@@ -132,6 +132,9 @@ public class MafiaRoom {
     private Player[] getMaxVotedPlayers() {
         ArrayList<Player> votedPlayers = new ArrayList<>();
         int maxVotes = this.getMaxVotes();
+        if (maxVotes == 0) {
+            return new Player[0];
+        }
         for (Player curPlayer : players.values()) {
             if (curPlayer.getVoteCount() == maxVotes) {
                 votedPlayers.add(curPlayer);
@@ -222,6 +225,9 @@ public class MafiaRoom {
 
     private Player[] getMaxMafiaVotedAlivePlayers() {
         int maxMafiaVotes = this.getMaxMafiaVotes();
+        if (maxMafiaVotes == 0) {
+            return new Player[0];
+        }
         ArrayList<Player> resultList = new ArrayList<>();
         for (Player curPlayer : players.values()) {
             if (this.getMafiaVotesCountOfPlayer(curPlayer) == maxMafiaVotes) {
