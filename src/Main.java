@@ -61,6 +61,7 @@ public class Main {
                         }
                         stdin.next();
                         room.processVotes();
+                        room.resetPlayersState();
                         room.startNight();
                     } else {
                         // It's night
@@ -72,6 +73,7 @@ public class Main {
                         }
                         stdin.next();
                         room.processNightEvents();
+                        room.resetPlayersState();
                         room.startDay();
                     }
 
