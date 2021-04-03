@@ -20,8 +20,11 @@ public class Main {
                 if (stdin.hasNext("(create_game)|(assign_role)|(start_game)|(get_game_state)")) {
                     String curToken = stdin.next();
                     if (curToken.equals("create_game")) {
-                        stdin.skip(" ");
-                        String[] names = stdin.nextLine().split(" ");
+                        String line = stdin.nextLine().trim();
+                        if (line.equals("")) {
+                            throw new IllegalArgumentException("No names specified.");
+                        }
+                        String[] names = line.split(" ");
                         if (room != null) {
                             throw new GameAlreadyStartedException();
                         }
@@ -99,7 +102,7 @@ public class Main {
                     }
 
                 }
-            } catch (MafiaException e) {
+            } catch (MafiaException | IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
