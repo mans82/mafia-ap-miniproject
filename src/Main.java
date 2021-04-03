@@ -35,7 +35,7 @@ public class Main {
                             }
                             room.assignRole(playerName, role);
                         } catch (IllegalArgumentException e) {
-                            System.out.println("role not found");
+                            System.out.println("Role not found.");
                         }
                     } else if (curToken.equals("start_game")) {
                         if (room == null) {

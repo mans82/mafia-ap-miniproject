@@ -3,6 +3,6 @@ package exceptions;
 public class NoRoomCreatedException extends MafiaException{
 
     public NoRoomCreatedException() {
-        super("no game created");
+        super("No game created.");
     }
 }

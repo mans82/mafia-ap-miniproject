@@ -93,7 +93,7 @@ public class MafiaRoom {
             throw new GameNotStartedException();
         }
         if (!this.isNight) {
-            throw new IllegalStateException("it is already day");
+            throw new IllegalStateException("It is already day.");
         }
         this.isNight = false;
         System.out.println("Day " + this.dayNum);
@@ -104,7 +104,7 @@ public class MafiaRoom {
             throw new GameNotStartedException();
         }
         if (this.isNight) {
-            throw new IllegalStateException("it is already night");
+            throw new IllegalStateException("It is already night.");
         }
         this.isNight = true;
         System.out.println("Night " + this.dayNum++);
@@ -170,9 +170,9 @@ public class MafiaRoom {
     public void processVotes() {
         Player[] votedPlayers = this.getMaxVotedPlayers();
         if (votedPlayers.length != 1) {
-            System.out.println("nobody died");
+            System.out.println("Nobody died.");
         } else {
-            System.out.println(votedPlayers[0].getName() + " died");
+            System.out.println("\"" + votedPlayers[0].getName() + "\" died.");
             if (votedPlayers[0] instanceof Joker) {
                 this.jokerWins = true;
             } else {
@@ -245,17 +245,17 @@ public class MafiaRoom {
 
     public void processNightEvents() throws IllegalStateException{
         if (!this.isNight) {
-            throw new IllegalStateException("It is currently day, not night");
+            throw new IllegalStateException("It is currently day, not night.");
         }
         // Mafia kills
         Player[] mafiaTargets = this.getMaxMafiaVotedAlivePlayers();
         Player deadPlayer = null;
         Doctor gameDoctor = this.getDoctor();
         for (Player mafiaTarget : mafiaTargets) {
-            System.out.println("mafia tried to kill " + mafiaTarget.getName());
+            System.out.println("Mafia tried to kill \"" + mafiaTarget.getName() + "\"");
         }
         if (mafiaTargets.length == 0 || mafiaTargets.length >= 3 || (mafiaTargets.length == 2 && gameDoctor == null)) {
-            System.out.println("nobody died");
+            System.out.println("Nobody died.");
         } else if (mafiaTargets.length == 2) {
             if (mafiaTargets[0] == gameDoctor.getSavedPlayer()) {
                 deadPlayer = mafiaTargets[1];
@@ -273,14 +273,14 @@ public class MafiaRoom {
                 ((BulletProof) deadPlayer).useExtraHealth();
             } else {
                 deadPlayer.die();
-                System.out.println(deadPlayer.getName() + " was killed");
+                System.out.println("\"" + deadPlayer.getName() + "\" was killed.");
             }
         }
 
         // Silencer events
         Silencer gameSilencer = this.getSilencer();
         if (gameSilencer != null && gameSilencer.getSilencedPlayer() != null) {
-            System.out.println("Silenced " + gameSilencer.getSilencedPlayer().getName());
+            System.out.println("Silenced \"" + gameSilencer.getSilencedPlayer().getName() + "\".");
         }
     }
 
@@ -310,7 +310,7 @@ public class MafiaRoom {
         for (String role : roles) {
             int count = this.getAlivePlayerCountByRoleName(role);
             if (count > 0) {
-                System.out.println(role + " = " + count);
+                System.out.println(role + ": " + count + (count == 1 ? "player" : "players"));
             }
         }
     }
