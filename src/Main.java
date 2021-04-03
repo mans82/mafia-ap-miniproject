@@ -29,6 +29,7 @@ public class Main {
                             throw new GameAlreadyStartedException();
                         }
                         room = new MafiaRoom(names);
+                        System.out.println("Room created with " + names.length + (names.length == 1 ? "player" : "players") + ".");
                     } else if (curToken.equals("assign_role")) {
                         try {
                             String playerName = stdin.next();
@@ -37,6 +38,7 @@ public class Main {
                                 throw new NoRoomCreatedException();
                             }
                             room.assignRole(playerName, role);
+                            System.out.println(role.name() + " role assigned to " + playerName + ".");
                         } catch (IllegalArgumentException e) {
                             System.out.println("Role not found.");
                         }
