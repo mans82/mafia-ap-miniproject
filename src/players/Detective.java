@@ -18,12 +18,12 @@ public class Detective extends Player{
     @Override
     public void playOn(Player player) throws CannotPlayException {
         if (this.hasQueried) {
-            throw new CannotPlayException("detective has already asked");
+            throw new CannotPlayException("Detective has already asked.");
         }
         if (player.isDead()) {
-            throw new CannotPlayException("suspect is dead");
+            throw new CannotPlayException("Suspect is dead.");
         }
-        System.out.println(player.isMafia() ? "YES" : "NO");
+        System.out.println(player.isMafia() ? "Yes..." : "No!");
         this.hasQueried = true;
     }
 

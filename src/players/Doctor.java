@@ -19,7 +19,7 @@ public class Doctor extends Player{
     @Override
     public void playOn(Player player) throws CannotPlayException {
         if (player.isDead()) {
-            throw new CannotPlayException("target already dead");
+            throw new CannotPlayException("Target has already died.");
         }
         this.savedPlayer = player;
     }

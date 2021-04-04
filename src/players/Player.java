@@ -23,10 +23,10 @@ public abstract class Player {
 
     public void vote(Player votee) throws IllegalStateException, CannotPlayException {
         if (this.voted) {
-            throw new IllegalStateException("Player already voted");
+            throw new IllegalStateException("Player has already voted.");
         }
         if (votee.isDead()) {
-            throw new CannotPlayException("votee already dead");
+            throw new CannotPlayException("Votee has already died.");
         }
         votee.voteCount++;
         this.voted = true;

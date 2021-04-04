@@ -19,7 +19,7 @@ public class Mafia extends Player{
     @Override
     public void playOn(Player player) throws CannotPlayException, TargetIsMafiaException {
         if (player.isDead()) {
-            throw new CannotPlayException("votee already dead");
+            throw new CannotPlayException("Votee has already died.");
         }
         if (player instanceof Mafia) {
             // Should not be able to vote!
